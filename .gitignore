@@ -1,0 +1,8 @@
+# Generated upscaled images and temporary uploads
+outputs/
+
+# Local editor and operating system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

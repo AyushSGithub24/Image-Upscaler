@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Image Upscaler — Local studio</title>
+    <meta name="description" content="Upscale images locally with Real-ESRGAN.">
+    <link rel="icon" href="/favicon.svg">
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/app.js"></script>
+</head>
+
+<body>
+    <main>
+        <header><a class="brand" href="/">▧ <span>Image Upscaler</span></a><span class="local">LOCAL STUDIO</span>
+        </header>
+        <div class="intro">
+            <p class="eyebrow">MORE PIXELS. MORE POSSIBILITIES.</p>
+            <h1>Give your images room to grow.</h1>
+            <p>Enlarge your image with AI, right on your laptop.</p>
+        </div>
+        <div class="workspace">
+            <section class="controls" aria-label="Upscale settings">
+                <h2>Start with your image</h2>
+                <label class="drop" id="drop" for="file"><span class="upload-icon">＋</span><strong>Choose an
+                        image</strong><span>or drop it here</span><small>PNG, JPG or WebP · up to 30 MB</small><input
+                        id="file" type="file" accept="image/png,image/jpeg,image/webp"></label>
+                <p id="filename" class="filename">No image selected</p>
+                <fieldset>
+                    <legend>Enlargement</legend>
+                    <div class="scales"><label><input type="radio" name="scale" value="2"><span><b>2×</b><small>Double
+                                    the dimensions</small></span></label><label><input type="radio" name="scale"
+                                value="4" checked><span><b>4×</b><small>AI model
+                                    output</small></span></label><label><input type="radio" name="scale"
+                                value="6"><span><b>6×</b><small>AI + resizing</small></span></label><label><input
+                                type="radio" name="scale" value="10"><span><b>10×</b><small>AI +
+                                    resizing</small></span></label></div>
+                    <p id="target-size" class="filename" aria-live="polite">Upload an image to see the output
+                        dimensions.</p>
+                    <p class="note">The complete image keeps its original proportions. 6× and 10× resize the 4× AI
+                        result; larger dimensions do not add more recovered detail.</p>
+                </fieldset>
+                <button id="run" disabled>Upscale image</button>
+                <div id="status" role="status" aria-live="polite">Choose an image to begin.</div><progress id="progress"
+                    max="100" value="0" hidden></progress>
+                <p class="note">For text-heavy images, check letters and numbers in the result before printing.</p>
+            </section>
+            <section class="preview" aria-label="Image previews">
+                <div class="preview-title">
+                    <h2>Your workspace</h2><span id="badge">PREVIEW</span>
+                </div>
+                <div class="images">
+                    <figure>
+                        <figcaption><span>Original</span><small id="original-size">—</small></figcaption>
+                        <div class="canvas"><img id="original" hidden alt="Original uploaded image"><span
+                                id="original-empty">Your image appears here</span></div>
+                    </figure>
+                    <figure>
+                        <figcaption><span>Upscaled</span><small id="result-size">—</small></figcaption>
+                        <div class="canvas"><img id="result" hidden alt="AI upscaled image"><span id="result-empty">A
+                                sharper view awaits</span></div>
+                    </figure>
+                </div>
+                <div class="preview-footer">
+                    <p>Click either image to inspect it at full size.</p><a id="download" class="download" hidden
+                        download="upscaled.png">Download PNG</a>
+                </div>
+            </section>
+        </div>
+        <footer>Powered by Real-ESRGAN <span>Images are processed locally and saved in your outputs folder.</span>
+        </footer>
+    </main>
+</body>
+
+</html>
